@@ -4,17 +4,21 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vladimirbashev/node-express.git"
+    "url": "git+https://github.com/vladimirbashev/node-express-demo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vladimirbashev/node-express/issues"
+    "url": "https://github.com/vladimirbashev/node-express-demo/issues"
   },
-  "homepage": "https://github.com/vladimirbashev/node-express#readme",
-  "description": ""
+  "homepage": "https://github.com/vladimirbashev/node-express-demo#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
