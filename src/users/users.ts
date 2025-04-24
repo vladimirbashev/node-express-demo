@@ -2,7 +2,6 @@ import express from "express"
 import type { Response, Request, NextFunction} from "express"
 
 const userRouter = express.Router();
-
 userRouter.use((req: Request, res: Response, next: NextFunction) => {
     console.log('Time users:', Date.now());
     next();
