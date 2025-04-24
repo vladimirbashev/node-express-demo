@@ -21,7 +21,8 @@
   "homepage": "https://github.com/vladimirbashev/node-express-demo#readme",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "tslog": "^3.2.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
