@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+//    "noEmit": true,
     "target": "esnext",
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+
+    "emitDecoratorMetadata": true,
     "allowImportingTsExtensions": true,
     "outDir": "./dist",
     "rootDir": "./src",
@@ -11,7 +16,6 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
