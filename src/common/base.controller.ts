@@ -5,6 +5,7 @@ import type {Response} from "express";
 
 
 export abstract class BaseController {
+    public path: string;
     private logger: LoggerService
     private readonly _router: Router;
 

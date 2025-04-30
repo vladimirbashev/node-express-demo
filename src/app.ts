@@ -38,6 +38,10 @@ export class App {
     }
 
     useRoutes() {
-        this.app.use('/users', this.userController.router);
+        this.useRoute(this.userController);
+    }
+
+    useRoute(controller: BaseController) {
+        this.app.use(`/${controller.path}`, controller.router);
     }
 }
