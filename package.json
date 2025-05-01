@@ -2,7 +2,7 @@
   "name": "node-express-demo",
   "version": "1.0.0",
   "main": "src/main.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "start": "node dist/main.js",
@@ -22,6 +22,7 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "reflect-metadata": "^0.2.2",
     "tslog": "^3.2.0"
   },
   "devDependencies": {

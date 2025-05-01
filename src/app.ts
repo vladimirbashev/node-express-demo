@@ -1,22 +1,22 @@
 import express, {type Express} from "express";
 import type {Server} from "http";
-import type {LoggerService} from "./logger/logger.service.js";
 import type {BaseController} from "./common/base.controller.js";
-import type {ExceptionFilter} from "./errors/exception.filter.js";
+import type {iLoggerService} from "./logger/logger.interface.js";
+import type {iExceptionFilter} from "./errors/exception.filter.interface.js";
 
 
 export class App {
     app: Express;
     port: number;
     server: Server;
-    logger: LoggerService;
+    logger: iLoggerService;
     userController: BaseController;
-    exceptionFilter: ExceptionFilter;
+    exceptionFilter: iExceptionFilter;
 
     constructor(
-        logger: LoggerService,
+        logger: iLoggerService,
         userController: BaseController,
-        exceptionFilter: ExceptionFilter)
+        exceptionFilter: iExceptionFilter)
     {
         this.app = express();
         this.port = 9000;
