@@ -3,6 +3,7 @@ import {Router} from "express";
 import type {iControllerRoute} from "./route.interface.js";
 import type {Response} from "express";
 import {injectable} from "inversify";
+import 'reflect-metadata'
 
 @injectable()
 export abstract class BaseController {

@@ -5,6 +5,7 @@ import type {LoggerService} from "../logger/logger.service.js";
 import type {IExceptionFilter} from "./exception.filter.interface.js";
 import {HTTPError} from "./http-error.class.js";
 import {ILoggerService} from "../logger/logger.interface.ts";
+import 'reflect-metadata'
 
 @injectable()
 export class ExceptionFilter implements IExceptionFilter{

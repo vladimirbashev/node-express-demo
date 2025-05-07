@@ -4,6 +4,7 @@ import {HTTPError} from "../errors/http-error.class.js";
 import {inject, injectable} from "inversify";
 import {TYPES} from "../types.ts";
 import {ILoggerService} from "../logger/logger.interface.ts";
+import 'reflect-metadata'
 
 @injectable()
 export class UserController extends BaseController {

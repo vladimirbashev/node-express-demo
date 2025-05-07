@@ -6,6 +6,7 @@ import type {BaseController} from "./common/base.controller.js";
 import type {ILoggerService} from "./logger/logger.interface.js";
 import type {IExceptionFilter} from "./errors/exception.filter.interface.js";
 import { UserController } from './users/users.controller';
+import 'reflect-metadata'
 
 @injectable()
 export class App {
