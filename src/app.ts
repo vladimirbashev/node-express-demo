@@ -1,23 +1,27 @@
+import { inject, injectable } from 'inversify';
+import { TYPES } from './types';
 import express, {type Express} from "express";
 import type {Server} from "http";
 import type {BaseController} from "./common/base.controller.js";
-import type {iLoggerService} from "./logger/logger.interface.js";
-import type {iExceptionFilter} from "./errors/exception.filter.interface.js";
-
+import type {ILoggerService} from "./logger/logger.interface.js";
+import type {IExceptionFilter} from "./errors/exception.filter.interface.js";
+import { UserController } from './users/users.controller';
 
 export class App {
     app: Express;
     port: number;
     server: Server;
-    logger: iLoggerService;
+    logger: ILoggerService;
     userController: BaseController;
-    exceptionFilter: iExceptionFilter;
+    exceptionFilter: IExceptionFilter;
 
     constructor(
-        logger: iLoggerService,
-        userController: BaseController,
-        exceptionFilter: iExceptionFilter)
-    {
+        @inject(TYPES.ILogger) logger: ILoggerService,
+        @inject(TYPES.UserController) userController: UserController,
+        @inject(TYPES.ExeptionFilter) exceptionFilter: IExceptionFilter,
+        // @inject(TYPES.ConfigService) private configService: IConfigService,
+        // @inject(TYPES.PrismaService) private prismaService: PrismaService,
+    ) {
         this.app = express();
         this.port = 9000;
         this.logger = logger;

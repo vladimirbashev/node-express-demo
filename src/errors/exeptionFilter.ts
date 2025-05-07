@@ -1,12 +1,15 @@
+import { inject, injectable } from 'inversify';
+import { TYPES } from '../types';
 import type {NextFunction, Request, Response} from "express";
 import type {LoggerService} from "../logger/logger.service.js";
-import type {iExceptionFilter} from "./exception.filter.interface.js";
+import type {IExceptionFilter} from "./exception.filter.interface.js";
 import {HTTPError} from "./http-error.class.js";
+import {ILoggerService} from "../logger/logger.interface.ts";
 
-export class ExceptionFilter implements iExceptionFilter{
+export class ExeptionFilter implements IExceptionFilter{
     logger: LoggerService;
 
-    constructor(logger: LoggerService) {
+    constructor(@inject(TYPES.ILogger) logger: ILoggerService) {
         this.logger = logger;
     }
 
