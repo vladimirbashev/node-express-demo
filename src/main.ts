@@ -1,7 +1,7 @@
 import {App} from "./app.js";
 import {LoggerService} from "./logger/logger.service.js";
 import {UserController} from "./users/users.controller.js";
-import {ExeptionFilter} from "./errors/exeptionFilter.ts";
+import {ExceptionFilter} from "./errors/exceptionFilter.ts";
 import { Container, ContainerModule  } from 'inversify';
 import {TYPES} from "./types.ts";
 import {ILoggerService} from "./logger/logger.interface.ts";
@@ -10,7 +10,7 @@ import {IUserController} from "./users/users.controller.interface.ts";
 
 export const appBindings = new ContainerModule((load) => {
     load.bind<ILoggerService>(TYPES.ILogger).to(LoggerService).inSingletonScope();
-    load.bind<IExceptionFilter>(TYPES.ExeptionFilter).to(ExeptionFilter);
+    load.bind<IExceptionFilter>(TYPES.ExeptionFilter).to(ExceptionFilter);
     load.bind<IUserController>(TYPES.UserController).to(UserController);
     // load.bind<iUserService>(TYPES.UserService).to(UserService);
     // load.bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();

@@ -7,7 +7,7 @@ import {HTTPError} from "./http-error.class.js";
 import {ILoggerService} from "../logger/logger.interface.ts";
 
 @injectable()
-export class ExeptionFilter implements IExceptionFilter{
+export class ExceptionFilter implements IExceptionFilter{
     logger: LoggerService;
 
     constructor(@inject(TYPES.ILogger) logger: ILoggerService) {
