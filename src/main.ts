@@ -10,7 +10,7 @@ import {IUserController} from "./users/users.controller.interface.ts";
 
 export const appBindings = new ContainerModule((load) => {
     load.bind<ILoggerService>(TYPES.ILogger).to(LoggerService).inSingletonScope();
-    load.bind<IExceptionFilter>(TYPES.ExeptionFilter).to(ExceptionFilter);
+    load.bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
     load.bind<IUserController>(TYPES.UserController).to(UserController);
     // load.bind<iUserService>(TYPES.UserService).to(UserService);
     // load.bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();

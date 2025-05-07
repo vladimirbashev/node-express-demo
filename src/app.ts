@@ -19,7 +19,7 @@ export class App {
     constructor(
         @inject(TYPES.ILogger) logger: ILoggerService,
         @inject(TYPES.UserController) userController: UserController,
-        @inject(TYPES.ExeptionFilter) exceptionFilter: IExceptionFilter,
+        @inject(TYPES.ExceptionFilter) exceptionFilter: IExceptionFilter,
         // @inject(TYPES.ConfigService) private configService: IConfigService,
         // @inject(TYPES.PrismaService) private prismaService: PrismaService,
     ) {
