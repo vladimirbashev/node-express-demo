@@ -1,10 +1,11 @@
 import {BaseController} from "../common/base.controller.js";
 import type {NextFunction, Request, Response} from "express";
 import {HTTPError} from "../errors/http-error.class.js";
-import {inject} from "inversify";
+import {inject, injectable} from "inversify";
 import {TYPES} from "../types.ts";
 import {ILoggerService} from "../logger/logger.interface.ts";
 
+@injectable()
 export class UserController extends BaseController {
     path = 'users';
     constructor(@inject(TYPES.ILogger) logger: ILoggerService) {

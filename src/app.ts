@@ -7,6 +7,7 @@ import type {ILoggerService} from "./logger/logger.interface.js";
 import type {IExceptionFilter} from "./errors/exception.filter.interface.js";
 import { UserController } from './users/users.controller';
 
+@injectable()
 export class App {
     app: Express;
     port: number;

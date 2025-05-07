@@ -6,6 +6,7 @@ import type {IExceptionFilter} from "./exception.filter.interface.js";
 import {HTTPError} from "./http-error.class.js";
 import {ILoggerService} from "../logger/logger.interface.ts";
 
+@injectable()
 export class ExeptionFilter implements IExceptionFilter{
     logger: LoggerService;
 
