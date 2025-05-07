@@ -13,22 +13,16 @@ export class App {
     app: Express;
     port: number;
     server: Server;
+    @inject(TYPES.ILogger)
     logger: ILoggerService;
-    userController: BaseController;
+    @inject(TYPES.UserController)
+    userController: UserController;
+    @inject(TYPES.ExceptionFilter)
     exceptionFilter: IExceptionFilter;
 
-    constructor(
-        @inject(TYPES.ILogger) logger: ILoggerService,
-        @inject(TYPES.UserController) userController: UserController,
-        @inject(TYPES.ExceptionFilter) exceptionFilter: IExceptionFilter,
-        // @inject(TYPES.ConfigService) private configService: IConfigService,
-        // @inject(TYPES.PrismaService) private prismaService: PrismaService,
-    ) {
+    constructor() {
         this.app = express();
         this.port = 9000;
-        this.logger = logger;
-        this.userController = userController;
-        this.exceptionFilter = exceptionFilter;
     }
 
     public async init() {
