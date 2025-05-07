@@ -8,6 +8,11 @@ import {ILoggerService} from "./logger/logger.interface.ts";
 import {IExceptionFilter} from "./errors/exception.filter.interface.ts";
 import {IUserController} from "./users/users.controller.interface.ts";
 
+export interface IBootstrapReturn {
+    appContainer: Container;
+    app: App;
+}
+
 export const appBindings = new ContainerModule((load) => {
     load.bind<ILoggerService>(TYPES.ILogger).to(LoggerService).inSingletonScope();
     load.bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
@@ -19,15 +24,12 @@ export const appBindings = new ContainerModule((load) => {
     load.bind<App>(TYPES.Application).to(App);
 });
 
-async function bootstrap() {
-    // const logger = new LoggerService()
-    // const app = new App(logger, new UserController(logger), new ExceptionFilter(logger));
-
+async function bootstrap(): Promise<IBootstrapReturn> {
     const appContainer = new Container();
     await appContainer.load(appBindings);
     const app = appContainer.get<App>(TYPES.Application);
     await app.init();
+    return { appContainer, app };
 }
 
-
-bootstrap();
+export const boot = bootstrap();
