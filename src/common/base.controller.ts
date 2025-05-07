@@ -2,8 +2,9 @@ import type {LoggerService} from "../logger/logger.service.js";
 import {Router} from "express";
 import type {iControllerRoute} from "./route.interface.js";
 import type {Response} from "express";
+import {injectable} from "inversify";
 
-
+@injectable()
 export abstract class BaseController {
     public path: string;
     private logger: LoggerService
