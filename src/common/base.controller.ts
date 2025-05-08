@@ -1,17 +1,16 @@
-import type {LoggerService} from "../logger/logger.service.js";
 import {Router} from "express";
 import type {iControllerRoute} from "./route.interface.js";
 import type {Response} from "express";
 import {injectable} from "inversify";
-import 'reflect-metadata'
+import {ILoggerService} from "../logger/logger.interface.ts";
 
 @injectable()
-export abstract class BaseController {
+export abstract class BaseController{
     public path: string;
-    private logger: LoggerService
+    private logger: ILoggerService;
     private readonly _router: Router;
 
-    constructor(logger: LoggerService) {
+    protected constructor(logger: ILoggerService) {
         this.logger = logger;
         this._router = Router();
     }
@@ -35,8 +34,8 @@ export abstract class BaseController {
 
     protected bindRoutes(routes: iControllerRoute[]): void {
         routes.forEach(route => {
-            this.logger.log(`[${route.method}] ${route.path}`)
-            this.router[route.method](route.path, route.func.bind(this))
-        })
+            this.logger.log(`[${route.method}] ${route.path}`);
+            this.router[route.method](route.path, route.func.bind(this));
+        });
     }
 }

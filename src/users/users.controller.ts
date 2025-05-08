@@ -4,10 +4,11 @@ import {HTTPError} from "../errors/http-error.class.js";
 import {inject, injectable} from "inversify";
 import {TYPES} from "../types.ts";
 import {ILoggerService} from "../logger/logger.interface.ts";
-import 'reflect-metadata'
+import {IUserController} from "./users.controller.interface.ts";
+import {UserLoginDto} from "./dto/user-login.dto.ts";
 
 @injectable()
-export class UserController extends BaseController {
+export class UserController extends BaseController implements IUserController {
     path = 'users';
     constructor(@inject(TYPES.ILogger) logger: ILoggerService) {
         super(logger);
@@ -16,19 +17,20 @@ export class UserController extends BaseController {
             { path: '/register', func: this.register, method: 'post' },
             { path: '/error', func: this.error, method: 'get' },
             { path: '', func: this.root, method: 'get' }
-        ])
+        ]);
     }
 
-    login(req: Request, res: Response, next: NextFunction) {
-        this.ok(res, 'login')
+    login(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction) {
+        console.log(req.body);
+        this.ok(res, 'login');
     }
 
     register(req: Request, res: Response, next: NextFunction) {
-        this.ok(res, 'register')
+        this.ok(res, 'register');
     }
 
     error(req: Request, res: Response, next: NextFunction) {
-        next(new HTTPError(500, 'Test Error', this.path))
+        next(new HTTPError(500, 'Test Error', this.path));
     }
 
     root(req: Request, res: Response, next: NextFunction) {
@@ -36,6 +38,6 @@ export class UserController extends BaseController {
             users: [
                 {id: 1, loginname: 'admin'}
             ]
-        })
+        });
     }
 }
