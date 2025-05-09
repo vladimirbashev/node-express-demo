@@ -13,14 +13,14 @@
 
     "allowImportingTsExtensions": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "types": ["node"],
+//    "rootDir": "./src",
+    "types": ["jest", "node"],   // Убедись, что jest здесь
     "strict": true,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src"],
+//  "include": ["src"],
   "exclude": ["node_modules"]
 }
