@@ -12,10 +12,12 @@ export class AuthMiddleware implements IMiddleware {
 	execute(req: Request, res: Response, next: NextFunction): void {
 		if (req.headers.authorization) {
 			jwt.verify(req.headers.authorization.split(' ')[1], this.secret, (err, payload) => {
-				if (err) {
+				if (err || !payload) {
 					next();
-				} else if (payload && isJwtPayload(payload)) {
+				} else if (isJwtPayload(payload)) {
 					req.user = payload.email;
+					next();
+				} else {
 					next();
 				}
 			});
@@ -29,7 +31,6 @@ function isJwtPayload(payload: any): payload is JwtPayload {
 	return (
 		typeof payload === 'object' &&
 		payload !== null &&
-		typeof payload.sub === 'string' &&
-		typeof payload.exp === 'number'
+		typeof payload.email === 'string'
 	);
 }
