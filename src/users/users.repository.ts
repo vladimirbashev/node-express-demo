@@ -28,7 +28,7 @@ export class UsersRepository implements IUsersRepository {
 		});
 	}
 
-	async all(): Promise<UserModel[] | null> {
+	async all(): Promise<UserModel[]> {
 		return this.prismaService.client.userModel.findMany();
 	}
 }

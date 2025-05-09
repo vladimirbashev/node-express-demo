@@ -29,7 +29,7 @@ export class UserController extends BaseController implements IUserController {
         this.bindRoutes([
             { path: '/login', func: this.login, method: 'post', middlewares: [new ValidateMiddleware(UserLoginDto)],},
             { path: '/register', func: this.register, method: 'post', middlewares: [new ValidateMiddleware(UserRegisterDto)],},
-            { path: '', func: this.root, method: 'get' },
+            { path: '', func: this.root, method: 'get', middlewares: [new AuthGuard()],},
             {
                 path: '/info',
                 method: 'get',
