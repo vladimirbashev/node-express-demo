@@ -21,8 +21,9 @@ export default [
         rules: {
             'semi': ['error', 'always'],
             'quotes': ['error', 'single'],
-            "no-var": "error",
-            "prefer-const": "error",
+            'comma-dangle': ['error', 'never'],
+            'no-var': 'error',
+            'prefer-const': 'error',
             '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'off',
