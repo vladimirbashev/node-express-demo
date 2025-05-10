@@ -1,5 +1,6 @@
 import typescriptParser from "@typescript-eslint/parser";
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
+import globals from 'globals';
 
 export default [
     { ignores: ['dist', 'node_modules'] },
@@ -7,6 +8,7 @@ export default [
         files: ['**/*.ts', '**/*.tsx'],
         languageOptions: {
             parser: typescriptParser,
+            globals: globals.node,
             parserOptions: {
                 ecmaVersion: 'latest',
                 project: './tsconfig.json',
@@ -16,14 +18,9 @@ export default [
         plugins: {
             '@typescript-eslint': typescriptPlugin,
         },
-        globals: {
-            NodeJS: true,
-            require: true,
-            module: true,
-            __dirname: true,
-        },
         rules: {
-            semi: "error",
+            'semi': ['error', 'always'],
+            'quotes': ['error', 'single'],
             "no-var": "error",
             "prefer-const": "error",
             '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
