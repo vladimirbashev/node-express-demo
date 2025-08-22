@@ -6,7 +6,7 @@ export class User {
 	private readonly _name: string;
 
 	constructor( _email: string, _name: string,
-		passwordHash?: string,
+		passwordHash?: string
 	) {
 		this._email = _email;
 		this._name = _name;

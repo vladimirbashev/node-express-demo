@@ -1,15 +1,15 @@
 import { inject, injectable } from 'inversify';
 import { TYPES } from './types';
-import express, {type Express} from "express";
-import type {Server} from "http";
-import type {BaseController} from "./common/base.controller.js";
-import type {ILoggerService} from "./logger/logger.interface.js";
-import type {IExceptionFilter} from "./errors/exception.filter.interface.js";
+import express, {type Express} from 'express';
+import type {Server} from 'http';
+import type {BaseController} from './common/base.controller.js';
+import type {ILoggerService} from './logger/logger.interface.js';
+import type {IExceptionFilter} from './errors/exception.filter.interface.js';
 import { UserController } from './users/users.controller';
 import 'reflect-metadata';
-import {AuthMiddleware} from "./common/auth.middleware.ts";
-import {IConfigService} from "./config/config.service.interface.ts";
-import {PrismaService} from "./database/prisma.service.ts";
+import {AuthMiddleware} from './common/auth.middleware.ts';
+import {IConfigService} from './config/config.service.interface.ts';
+import {PrismaService} from './database/prisma.service.ts';
 
 @injectable()
 export class App {
@@ -38,17 +38,17 @@ export class App {
     }
 
     useMiddleware(): void {
-        this.app.use(express.json());
         const authMiddleware = new AuthMiddleware(this.configService.get('SECRET'));
-        this.app.use(authMiddleware.execute.bind(authMiddleware));
+        [
+            express.json(),
+            authMiddleware.execute.bind(authMiddleware)
+        ].forEach(m => this.app.use(m));
     }
 
     useRoutes() {
-        this.useRoute(this.userController);
-    }
-
-    useRoute(controller: BaseController) {
-        this.app.use(`/${controller.path}`, controller.router);
+        [
+            this.userController
+        ].forEach( c => this.app.use(`/${c.path}`, c.router));
     }
 
     useExceptionFilters() {

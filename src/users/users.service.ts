@@ -6,7 +6,7 @@ import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 import { IUsersRepository } from './users.repository.interface';
 import { IUserService } from './users.service.interface';
-import { UserModel } from "@prisma/client";
+import { UserModel } from '@prisma/client';
 
 
 @injectable()

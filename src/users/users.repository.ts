@@ -15,16 +15,16 @@ export class UsersRepository implements IUsersRepository {
 			data: {
 				email,
 				password,
-				name,
-			},
+				name
+			}
 		});
 	}
 
 	async find(email: string): Promise<UserModel | null> {
 		return this.prismaService.client.userModel.findFirst({
 			where: {
-				email,
-			},
+				email
+			}
 		});
 	}
 
